@@ -1,0 +1,4 @@
+ci: add GitHub Actions workflow running network-free smoke tests
+
+Runs pytest tests/ -m "not model" on push/PR via uv sync --locked.
+Model-download smoke tests stay manual-only (tests/test_examples_smoke.py, pytest -m model).

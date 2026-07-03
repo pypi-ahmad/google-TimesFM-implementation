@@ -14,7 +14,7 @@ zero-shot toolkit covered in this repo:
 
 - **Covariates (XReg)** -- if you have known external signals (price,
   promotions, holidays, weather), see
-  [04 - Core Concepts, section 6](04-core-concepts.md#6-covariates--xreg)
+  [04 - Core Concepts, section 6](04-core-concepts.md#6-covariates-xreg)
   and [`examples/03_covariates_xreg_example.py`](../examples/03_covariates_xreg_example.py).
   This is usually cheaper and more interpretable than fine-tuning, and
   often closes most of the gap a custom-trained model would have offered.

@@ -1,6 +1,6 @@
 # Google TimesFM Implementation Handbook
 
-Version: `v2.0.0`
+Version: `v2.1.0`
 
 > **This is the advanced/production-tier manual.** If you're new to
 > TimesFM, start with the beginner learning path in
@@ -70,7 +70,7 @@ The project operationalizes TimesFM across 10 business-critical forecasting use 
 ```bash
 uv venv
 source .venv/bin/activate
-uv sync
+uv sync --locked --group applied --group xreg
 ```
 
 Optional kernel setup:
@@ -97,7 +97,7 @@ API docs referenced in section 16 below.
 Defined in `pyproject.toml`.
 
 Primary categories:
-- **Modeling**: `timesfm[torch,xreg]`
+- **Modeling**: `timesfm[torch]` (plus optional `timesfm[xreg]` if you enable covariates)
 - **Data processing**: `pandas`, `polars`, `pyarrow`, `scikit-learn`
 - **Optimization**: `ortools`
 - **Validation and config**: `pydantic`

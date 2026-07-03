@@ -14,7 +14,7 @@ cd google-TimesFM-implementation
 
 uv venv
 source .venv/bin/activate
-uv sync
+uv sync --locked
 ```
 
 What each command does:
@@ -23,9 +23,41 @@ What each command does:
   nothing here touches your system Python.
 - `source .venv/bin/activate` -- makes that environment the active one for
   your current shell. (On Windows: `.venv\Scripts\activate`.)
-- `uv sync` -- reads `pyproject.toml` and `uv.lock` and installs the exact
-  dependency versions this repo was built and tested against, including
-  `timesfm[torch,xreg]`, PyTorch, pandas, and the plotting/notebook stack.
+- `uv sync --locked` -- reads `pyproject.toml` and `uv.lock` and installs
+  the exact dependency versions this repo was built and tested against.
+  By default, this installs the **beginner path** only: `timesfm[torch]`
+  (PyTorch inference), NumPy/pandas, and matplotlib for the first real plot.
+
+### Optional dependency groups
+
+This repository has two optional groups you only install if you need them:
+
+- **Covariates / XReg (optional):**
+
+  ```bash
+  uv sync --locked --group xreg
+  ```
+
+  This enables `examples/03_covariates_xreg_example.py` and the XReg
+  sections of the docs. Note: upstream TimesFM currently pulls `jax[cuda]`
+  for the `xreg` extra even if you only use the PyTorch backend; see
+  [08 - Troubleshooting](08-troubleshooting.md#installation-errors).
+
+- **Applied tier notebooks + handbook tooling (optional):**
+
+  ```bash
+  uv sync --locked --group applied
+  ```
+
+  This installs the Kaggle/Jupyter/OR-Tools/Polars/PyArrow stack used by
+  `notebooks/` and `HANDBOOK.md`. It is intentionally not required for the
+  beginner path.
+
+  If you want the **retail** case study (which uses covariates/XReg), install both:
+
+  ```bash
+  uv sync --locked --group applied --group xreg
+  ```
 
 ### Verify the install
 
@@ -55,20 +87,29 @@ the `timesfm` API itself is identical either way.
 
 ## GPU vs. CPU
 
-You don't configure this explicitly -- PyTorch detects hardware
-automatically:
+This repo is **beginner-first and reproducible**, so the default
+`uv sync --locked` environment installs **CPU-only PyTorch** wheels. Every
+example in this repository is sized to run comfortably on CPU.
+
+You can confirm you're on CPU by checking CUDA availability:
 
 ```bash
 uv run python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 ```
 
-- `True` -- TimesFM will use your GPU automatically. No code changes
-  needed.
-- `False` -- TimesFM runs on CPU. Every example in this repo is sized to
-  finish in well under a minute on CPU.
+- `False` is expected on the default environment.
 
-To **force** CPU even if a GPU is present (useful for reproducing this
-repo's documented outputs exactly, or debugging GPU-specific errors):
+### Want GPU acceleration?
+
+If you have an NVIDIA GPU (or other accelerators) and want GPU builds of
+PyTorch, switch the PyTorch index used by `uv` and re-lock. The official
+guide (with CUDA/ROCm/XPU index options) is here:
+<https://github.com/astral-sh/uv/blob/main/docs/guides/integration/pytorch.md>.
+
+This keeps the beginner path stable while allowing an advanced “GPU install”
+when you actually need it.
+
+To **force** CPU even when using a GPU-capable PyTorch build:
 
 ```bash
 CUDA_VISIBLE_DEVICES="" uv run python examples/01_minimal_synthetic_forecast.py
@@ -87,7 +128,7 @@ the model itself.
 > **Common mistake:** running the first example in an environment with no
 > internet access (a locked-down CI runner, an air-gapped machine) and
 > assuming the code is broken. It isn't -- it's waiting on a download. See
-> [08 - Troubleshooting](08-troubleshooting.md#network--download-errors) for
+> [08 - Troubleshooting](08-troubleshooting.md#network-download-errors) for
 > how to pre-download or vendor the checkpoint.
 
 ## Optional: Jupyter kernel for the notebooks
@@ -103,15 +144,17 @@ uv run python -m ipykernel install --user --name timesfm-local --display-name "P
 
 So examples stay reproducible, every doc and script in this repo assumes:
 
-- `timesfm[torch,xreg] >= 2.0.2` (the PyPI package version; this ships the
+- `timesfm[torch] >= 2.0.2` (the PyPI package version; this ships the
   "TimesFM 2.5" model API described throughout these docs -- see
   [04 - Core Concepts](04-core-concepts.md) for why the PyPI version number
   and the model version name differ)
+- `timesfm[xreg] >= 2.0.2` **only if** you install the optional `xreg`
+  group above and want covariates.
 - `torch >= 2.0`
 - Python `>= 3.11`
 
-Run `uv sync` again after pulling repo updates to stay aligned with these
-pins.
+Run `uv sync --locked` again after pulling repo updates to stay aligned
+with these pins.
 
 ---
 

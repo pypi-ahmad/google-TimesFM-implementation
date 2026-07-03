@@ -100,7 +100,7 @@ This is both simpler and faster than calling `.forecast()` once per series
 ## Covariate format (XReg)
 
 If you're using `forecast_with_covariates()` (see
-[04 - Core Concepts, section 6](04-core-concepts.md#6-covariates--xreg)),
+[04 - Core Concepts, section 6](04-core-concepts.md#6-covariates-xreg)),
 each covariate array must span **context length + horizon length** --
 because a covariate is only useful if you also know (or can plan/estimate)
 its value during the forecast window, not just historically:

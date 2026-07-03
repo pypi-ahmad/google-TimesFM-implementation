@@ -9,7 +9,7 @@ the repo root with `uv run python examples/<name>.py`.
 |---|--------|------------------|-------|
 | 1 | [`01_minimal_synthetic_forecast.py`](01_minimal_synthetic_forecast.py) | The smallest possible TimesFM call: load model, compile, forecast. | Nothing but the model download. |
 | 2 | [`02_beginner_airline_passengers_forecast.py`](02_beginner_airline_passengers_forecast.py) | A full but small real workflow: load real data, forecast, compare to baselines, plot. | Bundled dataset (`data/airline_passengers.csv`). |
-| 3 | [`03_covariates_xreg_example.py`](03_covariates_xreg_example.py) | When and how to add external signals (price, promotions) with XReg. | `timesfm[xreg]` extra (already in this project). |
+| 3 | [`03_covariates_xreg_example.py`](03_covariates_xreg_example.py) | When and how to add external signals (price, promotions) with XReg. | Optional dependency group: `uv sync --locked --group xreg`. |
 | 4 | [`04_evaluation_backtest_example.py`](04_evaluation_backtest_example.py) | Rolling backtesting -- how to evaluate a forecaster honestly instead of trusting one split. | Bundled dataset. |
 
 Each script has a companion doc in [`../docs/`](../docs/) that explains the
@@ -27,7 +27,7 @@ sense.
 ## `data/`
 
 - `airline_passengers.csv` -- the classic monthly airline passenger totals,
-  1949-1960 (144 rows). Public-domain dataset from Box, G. E. P., & Jenkins,
+  1949-1960 (144 rows). Small teaching dataset from Box, G. E. P., & Jenkins,
   G. M. (1976), *Time Series Analysis: Forecasting and Control*; widely
   redistributed for teaching (e.g. R's built-in `AirPassengers`). Bundled
   here so Tiers 2 and 4 run with no network access beyond the one-time model

@@ -38,7 +38,8 @@ pattern that made large language models useful zero-shot. It's not a
 research curiosity either: the same model powers
 [BigQuery ML](https://cloud.google.com/bigquery/docs/timesfm-model),
 [Google Sheets forecasting](https://workspaceupdates.googleblog.com/2026/02/forecast-data-in-connected-sheets-BigQueryML-TimesFM.html),
-and [Vertex AI Model Garden](https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/timesfm).
+and Vertex AI Model Garden (TimesFM is listed in the official repo; the Model Garden console itself requires a Google
+Cloud login): [Model Garden overview](https://cloud.google.com/model-garden).
 Full explanation: [`docs/00-overview.md`](docs/00-overview.md).
 
 > **Scope and honesty note:** per the
@@ -55,7 +56,7 @@ git clone https://github.com/pypi-ahmad/google-TimesFM-implementation.git
 cd google-TimesFM-implementation
 
 uv venv && source .venv/bin/activate
-uv sync
+uv sync --locked
 
 uv run python examples/01_minimal_synthetic_forecast.py
 ```
@@ -65,6 +66,10 @@ prints two forecast array shapes, and exits cleanly with no traceback. If
 anything goes wrong, see [`docs/08-troubleshooting.md`](docs/08-troubleshooting.md).
 Full setup details, GPU/CPU notes, and version requirements:
 [`docs/02-installation.md`](docs/02-installation.md).
+
+Optional installs:
+- Covariates/XReg: `uv sync --locked --group xreg`
+- Applied notebooks/handbook tooling: `uv sync --locked --group applied` (and `--group xreg` for the retail case study)
 
 ## Your first real forecast, in ~20 lines
 
@@ -122,6 +127,10 @@ per concept above), and [`notebooks/`](notebooks/) has ten full real-world
 case studies for after you've finished the path -- see
 [`notebooks/README.md`](notebooks/README.md).
 
+Optional but recommended: [`exercises/`](exercises/) turns the docs into
+hands-on practice (with runnable solutions) so the workflow becomes
+muscle memory.
+
 ## Repository structure
 
 ```text
@@ -130,6 +139,7 @@ case studies for after you've finished the path -- see
 ├── docs/                     <- the 00-10 learning path (start at 00-overview.md)
 │   └── evidence/              <- machine-generated evidence backing the case-study results
 ├── examples/                 <- 4 tiered, standalone, runnable scripts + bundled tiny dataset
+├── exercises/                <- optional practice track + runnable solutions
 ├── notebooks/                <- 10 applied case studies (advanced tier; see notebooks/README.md)
 ├── scripts/                  <- production tooling behind the applied tier (run/validate/build-evidence)
 ├── tests/                    <- environment + end-to-end smoke tests (pytest)
@@ -183,7 +193,7 @@ claim in this repo):**
 
 - [BigQuery ML: TimesFM model](https://cloud.google.com/bigquery/docs/timesfm-model)
 - [Connected Sheets forecasting with BigQuery ML/TimesFM](https://workspaceupdates.googleblog.com/2026/02/forecast-data-in-connected-sheets-BigQueryML-TimesFM.html)
-- [Vertex AI Model Garden: TimesFM](https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/timesfm)
+- [Vertex AI Model Garden](https://cloud.google.com/model-garden) (TimesFM is referenced in the official TimesFM repo; the console listing is not publicly crawlable without login.)
 
 **Frameworks and libraries used in the applied tier** (see [`HANDBOOK.md`](HANDBOOK.md)):
 
@@ -202,7 +212,10 @@ claim in this repo):**
 **Beginner-tier bundled dataset:** the classic monthly airline passengers
 series (1949-1960) used in `examples/02` and `examples/04`, from Box,
 G. E. P., & Jenkins, G. M. (1976), *Time Series Analysis: Forecasting and
-Control* -- a public-domain dataset standard in time-series education.
+Control* -- a small teaching dataset widely redistributed for time-series
+education. If you need strict dataset provenance/licensing for your use
+case, replace it with your own series; this repo’s beginner path is
+designed so the dataset choice doesn’t affect the core API concepts.
 
 ## License
 

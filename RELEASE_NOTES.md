@@ -1,14 +1,43 @@
 # Release Notes
 
-## Unreleased (post-v2.0.0)
+## Unreleased (post-v2.1.0)
 
 ### Added
 
+- (nothing yet)
+
+## v2.1.0 - 2026-07-03
+
+### Summary
+
+v2.1.0 tightens the repo into a more beginner-reliable learning resource:
+the default install is now lightweight and focused on the beginner path,
+covariates (XReg) and the applied tier are opt-in dependency groups, a new
+`exercises/` track pushes learners from reading to mastery, and CI now
+checks documentation links/domains so the learning path doesn’t silently
+rot.
+
+### Added
+
+- `exercises/`: three hands-on exercises (CSV preprocessing, rolling
+  backtesting, leakage traps) plus runnable solution scripts.
+- `scripts/check_markdown_links.py` + `tests/test_docs_links.py`: no-network
+  hygiene gate for relative Markdown links and banned domains.
 - `.github/workflows/tests.yml`: CI on push/PR to `main`, running
   `pytest tests/ -m "not model"` (the no-network, no-model-download
-  environment/API-surface smoke tests) via `uv sync --locked`. The
-  `model`-marked end-to-end tests (real ~800MB download + inference)
-  intentionally stay manual-only, matching this repo's stated scope.
+  environment/API-surface smoke tests) via `uv sync --locked`.
+
+### Changed
+
+- `pyproject.toml`: split dependencies into a lightweight beginner default
+  plus optional `--group xreg` (covariates) and `--group applied` (Kaggle +
+  notebooks + handbook tooling); version bumped to `2.1.0`.
+- `README.md` and `docs/00-overview.md`: removed the non-public
+  `pantheon.corp.google.com` link; replaced with a public Model Garden
+  entry point and clarified console access requires login.
+- `docs/02-installation.md` and `docs/08-troubleshooting.md`: updated to
+  document dependency groups and added a workaround for read-only `uv`
+  cache environments.
 
 ## v2.0.0 - 2026-07-03
 
@@ -59,7 +88,7 @@ now documented rather than silently avoided.
   troubleshooting, FAQ, and next steps including fine-tuning).
 - `examples/`: four tiered, standalone, verified-runnable scripts (minimal
   synthetic forecast, beginner real-dataset forecast, covariates/XReg, and
-  rolling-backtest evaluation), plus a bundled public-domain dataset
+  rolling-backtest evaluation), plus a bundled small teaching dataset
   (`examples/data/airline_passengers.csv`) so the beginner path needs no
   external accounts or downloads beyond the model weights.
 - `tests/`: environment/API-surface smoke tests (no network needed) and
@@ -132,4 +161,3 @@ Status:
 - TimesFM repo: https://github.com/google-research/timesfm
 - TimesFM blog: https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/
 - HF model card: https://huggingface.co/google/timesfm-2.5-200m-pytorch
-

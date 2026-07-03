@@ -8,7 +8,7 @@ This mirrors the official covariates example distributed with TimesFM:
 https://github.com/google-research/timesfm/tree/master/timesfm-forecasting/examples/covariates-forecasting
 
 Requires the `xreg` extra (already in this project's pyproject.toml):
-    uv sync --extra xreg   # or: pip install timesfm[xreg]
+    uv sync --locked --group xreg   # (installs timesfm[xreg])
 
 Companion doc: docs/04-core-concepts.md ("Covariates / XReg") and
 docs/05-data-format-and-preprocessing.md ("Covariate format").

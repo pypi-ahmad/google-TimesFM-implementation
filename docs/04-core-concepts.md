@@ -114,7 +114,7 @@ alongside the raw history.
 
 This is a **TimesFM 2.5-only feature** (TimesFM 1.0 does not support
 `forecast_with_covariates()`), requires the `xreg` extra
-(`pip install timesfm[xreg]`), and works through
+(`uv sync --locked --group xreg`, which installs `timesfm[xreg]`), and works through
 `model.forecast_with_covariates(...)`, which accepts:
 
 - `dynamic_numerical_covariates` -- numeric values known for both the

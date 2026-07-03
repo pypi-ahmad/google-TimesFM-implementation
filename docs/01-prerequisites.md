@@ -50,10 +50,11 @@ explanation the first time it's used:
 - **CPU-only works.** Every example in this repo runs on CPU. It's slower
   (seconds instead of milliseconds per forecast call) but produces
   identical results.
-- **GPU is optional, not required.** If you have an NVIDIA GPU with CUDA
-  set up, PyTorch will use it automatically and inference will be faster.
-  Apple Silicon (MPS) is possible but not exercised by this repo's examples
-  or tests.
+- **GPU is optional, not required.** This repo's default environment
+  intentionally installs **CPU-only PyTorch** for maximum portability and
+  fewer install failures. If you want GPU acceleration, follow the
+  instructions in [02 - Installation](02-installation.md#gpu-vs-cpu) to
+  switch the PyTorch index and re-lock.
 - **No internet after first run** for the core inference workflow, other
   than the one-time model download (cached locally by Hugging Face's
   `huggingface_hub` library, typically under `~/.cache/huggingface/`).

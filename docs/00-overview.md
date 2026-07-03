@@ -71,8 +71,11 @@ products, which is a useful signal of how it's meant to be used:
   call it directly from SQL for large-scale forecasting.
 - **[Google Sheets (Connected Sheets)](https://workspaceupdates.googleblog.com/2026/02/forecast-data-in-connected-sheets-BigQueryML-TimesFM.html)**
   -- forecast a column of numbers from a spreadsheet.
-- **[Vertex AI Model Garden](https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/timesfm)**
-  -- a hosted, dockerized endpoint for programmatic/agentic use.
+- **Vertex AI Model Garden** -- the official TimesFM repository lists a
+  "Vertex Model Garden" option for a hosted, dockerized endpoint for
+  programmatic/agentic use. The console listing itself requires a Google
+  Cloud login; public entry point:
+  <https://cloud.google.com/model-garden>.
 
 This repository uses the **open-source Python package** directly, which is
 the same model powering those products, but run locally on your own

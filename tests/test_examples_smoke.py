@@ -17,12 +17,12 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-import torch
 
 pytestmark = pytest.mark.model
 
 
 def _load_compiled_model():
+    import torch
     import timesfm
 
     torch.set_float32_matmul_precision("high")

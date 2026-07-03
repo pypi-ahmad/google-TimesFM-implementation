@@ -17,10 +17,18 @@ You're likely running Python outside the project's virtual environment.
 Fix: prefix commands with `uv run`, or explicitly activate the environment
 first (`source .venv/bin/activate`) before running plain `python`.
 
-**Dependency resolution fails / version conflicts during `uv sync`**
-Delete `.venv/` and retry (`rm -rf .venv && uv venv && uv sync`) to rule out
-a stale environment. If it persists, confirm your Python version matches
+**Dependency resolution fails / version conflicts during `uv sync --locked`**
+Delete `.venv/` and retry (`rm -rf .venv && uv venv && uv sync --locked`) to
+rule out a stale environment. If it persists, confirm your Python version matches
 [01 - Prerequisites](01-prerequisites.md) (`python3 --version` >= 3.11).
+
+**`uv` errors about a read-only cache directory (e.g. `.cache/uv/...` read-only)**
+Some restricted environments mount your home cache as read-only. Workaround:
+set a writable cache directory and retry:
+
+```bash
+UV_CACHE_DIR=/tmp/uv-cache XDG_CACHE_HOME=/tmp uv sync --locked
+```
 
 **Installing the `xreg` extra pulls in JAX/CUDA packages you don't want**
 The official `timesfm[xreg]` extra depends on `jax[cuda]` even if you only
