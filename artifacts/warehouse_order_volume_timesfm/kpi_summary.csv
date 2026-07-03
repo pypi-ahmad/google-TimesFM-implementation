@@ -1,0 +1,8 @@
+metric,value
+forecast_horizon_days,30.0
+avg_daily_orders_p50,48.88381576538086
+avg_daily_orders_q90,165.2136688232422
+max_daily_orders_q90,288.4311828613281
+avg_fte_required_q90,1.4666666984558105
+max_fte_required_q90,2.0
+high_delay_risk_days,0.0

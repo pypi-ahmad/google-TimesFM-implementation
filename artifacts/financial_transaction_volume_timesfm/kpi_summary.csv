@@ -1,0 +1,12 @@
+metric,value
+forecast_horizon_hours,168.0
+avg_p50_transactions_per_hour,37.99034881591797
+avg_q90_transactions_per_hour,46.09119415283203
+max_q90_transactions_per_hour,46.97312927246094
+avg_app_nodes_needed_q90,1.0
+max_app_nodes_needed_q90,1.0
+avg_fraud_analysts_needed_q90,1.0
+max_fraud_analysts_needed_q90,1.0
+high_risk_hours,0.0
+avg_estimated_p95_latency_ms,91.2248161044844
+max_estimated_p95_latency_ms,91.2794005238064

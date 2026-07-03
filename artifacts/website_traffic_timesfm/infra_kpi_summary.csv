@@ -1,0 +1,12 @@
+metric,value
+forecast_horizon_hours,168.0
+avg_p50_traffic_per_hour,2466.99560546875
+avg_q90_traffic_per_hour,3320.543212890625
+max_q90_traffic_per_hour,6205.61083984375
+baseline_servers,2.0
+avg_servers_needed_q90,1.2738095238095237
+max_servers_needed_q90,2.0
+scale_up_hours,0.0
+high_risk_hours,0.0
+avg_estimated_p95_latency_ms,142.3524203779551
+max_estimated_p95_latency_ms,184.27942459181924

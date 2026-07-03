@@ -1,0 +1,34 @@
+[project]
+name = "timesfm-retail-demand"
+version = "0.1.0"
+description = "Retail demand forecasting with Google TimesFM 2.5 on Favorita"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "kaggle>=1.7.4.5",
+  "loguru>=0.7.3",
+  "numpy>=2.2.0",
+  "ortools>=9.14.6206",
+  "pandas>=2.3.0",
+  "plotly>=6.1.0",
+  "polars>=1.31.0",
+  "pyarrow>=20.0.0",
+  "pydantic>=2.11.7",
+  "python-dateutil>=2.9.0.post0",
+  "scikit-learn>=1.7.0",
+  "timesfm[torch,xreg]>=2.0.1",
+  "tqdm>=4.67.1",
+  "jupyter>=1.1.1",
+  "nbconvert>=7.16.6",
+  "ipykernel>=6.29.5",
+  "matplotlib>=3.10.3",
+]
+
+[project.scripts]
+retail-demand-timesfm = "scripts.retail_demand_timesfm_favorita:main"
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100

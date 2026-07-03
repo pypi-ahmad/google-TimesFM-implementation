@@ -1,0 +1,3 @@
+policy,trips,shortage_days
+baseline_every2days,200,0
+forecast_triggered,100,0

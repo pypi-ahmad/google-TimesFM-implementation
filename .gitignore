@@ -1,0 +1,29 @@
+# Python / virtual env
+.venv/
+__pycache__/
+*.pyc
+
+# Local tool metadata
+.codex/
+.agents/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+/notebooks/final_real_runs/
+/notebooks/data/
+/notebooks/artifacts/
+
+# Large and environment-specific data
+/data/
+
+# Heavy run artifacts and intermediate runs
+/artifacts/final_real_runs/
+/artifacts/retail_demand_timesfm_real/
+/artifacts/retail_demand_timesfm_real_fixed/
+/artifacts/retail_demand_timesfm_smoke_opt/
+
+# Optional generated logs
+*.log
+
+# OS/editor
+.DS_Store

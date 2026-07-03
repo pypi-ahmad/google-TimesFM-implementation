@@ -1,0 +1,2 @@
+maintenance_action,priority,recommended_start,recommended_end,reason
+No urgent thermal anomaly predicted in next 6 hours,Low,,,Forecast remains below warning/critical thermal thresholds
