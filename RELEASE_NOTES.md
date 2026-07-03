@@ -1,5 +1,15 @@
 # Release Notes
 
+## Unreleased (post-v2.0.0)
+
+### Added
+
+- `.github/workflows/tests.yml`: CI on push/PR to `main`, running
+  `pytest tests/ -m "not model"` (the no-network, no-model-download
+  environment/API-surface smoke tests) via `uv sync --locked`. The
+  `model`-marked end-to-end tests (real ~800MB download + inference)
+  intentionally stay manual-only, matching this repo's stated scope.
+
 ## v2.0.0 - 2026-07-03
 
 ### Summary
