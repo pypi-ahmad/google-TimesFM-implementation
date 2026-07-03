@@ -1,11 +1,18 @@
 # Google TimesFM Implementation Handbook
 
-Version: `v1.0.0` (planned release)
+Version: `v2.0.0`
 
-This handbook is the operational and technical manual for the repository at:
-`/home/ahmad/AI/Github/google-TimesFM-implementation`
+> **This is the advanced/production-tier manual.** If you're new to
+> TimesFM, start with the beginner learning path in
+> [`docs/00-overview.md`](docs/00-overview.md) through
+> [`docs/10-next-steps.md`](docs/10-next-steps.md) and the runnable scripts
+> in [`examples/`](examples/) first -- this handbook assumes that
+> foundation and documents the ten real-world applied case studies in
+> [`notebooks/`](notebooks/) instead.
 
-It is written from actual repository code and real generated outputs. No synthetic or mocked metrics are reported.
+This handbook is the operational and technical manual for this repository's
+applied case-study tier. It is written from actual repository code and real
+generated outputs. No synthetic or mocked metrics are reported.
 
 ---
 
@@ -78,9 +85,10 @@ Kaggle configuration check:
 kaggle config view
 ```
 
-Observed local config during documentation work:
-- `username: pypiahmad`
-- `auth_method: ACCESS_TOKEN`
+Expected output confirms a configured `username` and `auth_method` (for
+example `ACCESS_TOKEN`). If this command errors, see
+[`docs/08-troubleshooting.md`](docs/08-troubleshooting.md) and the Kaggle
+API docs referenced in section 16 below.
 
 ---
 

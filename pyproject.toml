@@ -1,7 +1,7 @@
 [project]
-name = "timesfm-retail-demand"
-version = "0.1.0"
-description = "Retail demand forecasting with Google TimesFM 2.5 on Favorita"
+name = "google-timesfm-implementation"
+version = "2.0.0"
+description = "Zero-to-mastery learning path for Google TimesFM, plus 10 real-world applied forecasting case studies"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -16,7 +16,7 @@ dependencies = [
   "pydantic>=2.11.7",
   "python-dateutil>=2.9.0.post0",
   "scikit-learn>=1.7.0",
-  "timesfm[torch,xreg]>=2.0.1",
+  "timesfm[torch,xreg]>=2.0.2",
   "tqdm>=4.67.1",
   "jupyter>=1.1.1",
   "nbconvert>=7.16.6",
@@ -27,8 +27,16 @@ dependencies = [
 [project.scripts]
 retail-demand-timesfm = "scripts.retail_demand_timesfm_favorita:main"
 
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
 [tool.uv]
 package = false
 
 [tool.ruff]
 line-length = 100
+
+[tool.pytest.ini_options]
+markers = [
+  "model: exercises the real TimesFM model (downloads/loads checkpoint; needs network on first run)",
+]
