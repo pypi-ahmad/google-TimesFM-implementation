@@ -34,3 +34,7 @@ __pycache__/
 
 # OS/editor
 .DS_Store
+
+# Prevent tracking active git metadata directory
+/gitdir_store/
+/.gitdir/
